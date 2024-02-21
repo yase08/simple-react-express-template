@@ -7,15 +7,14 @@ const {
   exportUser,
   getUser,
 } = require("../controllers/UserController");
-const uploadPhoto = require("../libs/multer");
 const { authMiddleware } = require("../middlewares/authentication");
 const router = express.Router();
 
 router.get("/", authMiddleware, getUsers);
 router.get("/export", exportUser);
 router.get("/:id", authMiddleware, getUser);
-router.post("/", authMiddleware, uploadPhoto.single("image"), createUser);
+router.post("/", authMiddleware, createUser);
 router.delete("/:id", authMiddleware, deleteUser);
-router.put("/:id", authMiddleware, uploadPhoto.single("image"), updateUser);
+router.put("/:id", authMiddleware, updateUser);
 
 module.exports = router;

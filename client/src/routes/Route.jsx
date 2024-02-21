@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "../components/Pages/home/landing";
 import NotFoundPage from "../components/Pages/notfound";
 import DashboardUserPage from "../components/Pages/dashboard/dashboardUser";
+import DashboardProductPage from "../components/Pages/dashboard/dashboardProduct";
+import DashboardSalePage from "../components/Pages/dashboard/dashboardSale";
+import DashboardHistoryPage from "../components/Pages/dashboard/dashboardHistory";
 import ProtectedRoute from "./ProtectedRoute";
 import RequireAuth from "./RequireAuth";
 import DashboardEditUserPage from "../components/Pages/dashboard/dashboardEditUser";
@@ -22,9 +25,17 @@ const AppRouter = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/*" element={<NotFoundPage />} />
         <Route element={<ProtectedRoute />}>
-          <Route element={<RequireAuth allowedRoles={["USER", "ADMIN"]} />}>
+          <Route
+            element={<RequireAuth allowedRoles={["STAFF", "ADMINISTRATOR"]} />}
+          >
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/dashboard/users" element={<DashboardUserPage />} />
+            <Route
+              path="/dashboard/products"
+              element={<DashboardProductPage />}
+            />
+            <Route path="/dashboard/sales" element={<DashboardSalePage />} />
+            <Route path="/dashboard/histories" element={<DashboardHistoryPage />} />
             <Route
               path="/dashboard/setting"
               element={<DashboardSettingPage />}

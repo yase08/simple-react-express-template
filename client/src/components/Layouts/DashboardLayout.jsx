@@ -6,6 +6,9 @@ import Sidebar from "../Elements/Sidebar";
 import { SidebarItem } from "../Elements/SidebarItem";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoHelpBuoyOutline } from "react-icons/io5";
+import { AiOutlineInbox } from "react-icons/ai";
+import { FaSellcast } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa6";
 
 const DashboardLayout = ({ children }) => {
   const { pathname } = useLocation();
@@ -29,6 +32,30 @@ const DashboardLayout = ({ children }) => {
             active={pathname === "/user"}
           >
             User
+          </SidebarItem>
+          <SidebarItem
+            icon={<AiOutlineInbox size={20} />}
+            text={"Product"}
+            link={"/dashboard/products"}
+            active={pathname === "/product"}
+          >
+            Product
+          </SidebarItem>
+          <SidebarItem
+            icon={<FaSellcast size={20} />}
+            text={"Sale"}
+            link={"/dashboard/sales"}
+            active={pathname === "/sale"}
+          >
+            Sale
+          </SidebarItem>
+          <SidebarItem
+            icon={<FaRegClock size={20} />}
+            text={"History"}
+            link={"/dashboard/histories"}
+            active={pathname === "/history"}
+          >
+            History
           </SidebarItem>
           <hr className="my-3 border-base-100" />
           <SidebarItem

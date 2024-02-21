@@ -3,7 +3,11 @@ const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv").config();
 const app = express();
-const userRouter = require("./routes/UserRoute");
+const userRouter = require("./routes/SaleRoute");
+const productRouter = require("./routes/ProductRoute");
+const saleRouter = require("./routes/SaleRoute");
+const customerRouter = require("./routes/CustomerRoute");
+const detailSaleRouter = require("./routes/DetailSaleRoute");
 const authRouter = require("./routes/AuthRoute");
 
 app.use(express.json());
@@ -20,6 +24,10 @@ app.use(
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
+app.use("/api/sales", saleRouter);
+app.use("/api/customers", customerRouter);
+app.use("/api/detail-sales", detailSaleRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
